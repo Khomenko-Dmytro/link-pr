@@ -1,0 +1,86 @@
+.block__container {
+  margin: 0 auto;
+  width: 670px;
+  min-height: 55px;
+  border: 1px solid white;
+  border-radius: 28px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  margin-bottom: 15px;
+}
+
+.block__container:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.block__img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-image: url("/Me.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.block__link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.block__container:hover .block__link {
+  color: rgb(46, 25, 46);
+  transition: 0.2s ease;
+}
+
+.change__link_icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: rgb(221, 18, 18);
+}
+
+.change__link:hover .change__link_icon {
+  color: rgb(62, 58, 92);
+  transition: 0.2s ease;
+}
+
+.change__link:hover {
+  background-color: rgb(221, 221, 221);
+  transition: 0.3s ease;
+}
+
+.change__link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.void__div {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.double__input {
+  display: flex;
+  flex-direction: column;
+}
+
+.double__input input {
+  background: inherit;
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+}

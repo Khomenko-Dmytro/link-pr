@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: inherit;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+.fullscreen {
+  background: url(/wallpaper.jpg) center / cover no-repeat fixed;
+}
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+}

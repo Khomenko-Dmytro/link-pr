@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "./style.css";
+import styles from "./user.module.css";
+import stylesHeader from "/Users/Sebius/silicon-app/src/components/Header/header.module.css";
+import cn from "classnames";
 
 const UserName = (props) => {
   const [user, setUser] = useState(false);
@@ -8,10 +10,13 @@ const UserName = (props) => {
 
   useEffect(() => {
     if (userValue === null && userValue === "user_name") {
-      document.querySelector(".header__user_name").innerHTML = "user_name";
+      document.querySelectorAll(
+        `.${stylesHeader.header__user_name}`
+      ).innerHTML = "user_name";
     } else {
-      document.querySelector(".header__user_name").innerHTML =
-        "@" + `${userValue}`;
+      document.querySelectorAll(
+        `.${stylesHeader.header__user_name}`
+      ).innerHTML = "@" + `${userValue}`;
     }
   }, [userValue]);
 
@@ -23,9 +28,9 @@ const UserName = (props) => {
   }
 
   return (
-    <div className="top__block">
-      <div className="photo"></div>
-      <div className="title" onClick={() => setUser(true)}>
+    <div className={cn(styles.top__block)}>
+      <div className={cn(styles.photo)}></div>
+      <div className={cn(styles.title)} onClick={() => setUser(true)}>
         @
         {!user ? (
           <span>{userValue}</span>

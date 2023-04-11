@@ -21,23 +21,23 @@ function App() {
   useEffect(() => {
     function handleScroll() {
       if (window.scrollY > 70) {
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.block__header}`
         ).style.visibility = "visible";
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.header__link}`
         ).style.backgroundColor = "white";
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.header__link_icon}`
         ).style.color = "black";
       } else {
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.block__header}`
         ).style.visibility = "hidden";
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.header__link}`
         ).style.backgroundColor = "rgb(0, 0, 0)";
-        document.querySelectorAll(
+        document.querySelector(
           `.${stylesHeader.header__link_icon}`
         ).style.color = "white";
       }

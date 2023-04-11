@@ -27,13 +27,16 @@
 }
 
 .block__img {
-  border: 1px solid white;
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  /* background-image: url("/Me.jpg");
-  background-repeat: no-repeat; */
   background-size: 100%;
+}
+
+.block__img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .block__link {

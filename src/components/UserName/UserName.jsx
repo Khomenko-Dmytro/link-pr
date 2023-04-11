@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./user.module.css";
-import stylesHeader from "/Users/Sebius/silicon-app/src/components/Header/header.module.css";
+import stylesHeader from "../Header/header.module.css";
 import cn from "classnames";
 
 const UserName = (props) => {

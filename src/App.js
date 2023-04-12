@@ -56,6 +56,7 @@ function App() {
         <Header />
         <UserName />
         {posts}
+        <div className={cn(styles.block__marg)}></div>
         <Footer onClick={() => setPosts([...posts, <MyLink key={id()} />])} />
       </div>
     </div>

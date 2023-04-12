@@ -4,7 +4,6 @@ import cn from "classnames";
 import { useState } from "react";
 import { MdCreate } from "react-icons/md";
 import { MdRemoveCircleOutline } from "react-icons/md";
-import { useEffect } from "react";
 import facebook from "../UI/icons/facebook.png";
 import instagram from "../UI/icons/instagram.png";
 import twitter from "../UI/icons/twitter.png";
@@ -15,6 +14,7 @@ import pinterest from "../UI/icons/pinterest.png";
 import reddit from "../UI/icons/reddit.png";
 import telegram from "../UI/icons/telegram.png";
 import tiktok from "../UI/icons/tiktok.png";
+
 function id() {
   let date = Date.now();
   let random = Math.random().toString(36).substr(2);
@@ -48,17 +48,11 @@ const MyLink = (props) => {
   const [inputTitle, setInputTitle] = useState("title");
   const [inputLink, setInputLink] = useState("link");
 
-  function changePenColor() {
+  function changePenColor(e) {
     if (isEdit) {
       setPenIsEdit(true);
     } else {
       setPenIsEdit(false);
-    }
-  }
-
-  function handleKey(e) {
-    if (e.key === "Enter") {
-      setIsEdit(false);
     }
   }
 
@@ -91,6 +85,7 @@ const MyLink = (props) => {
       event.target.nextSibling.focus();
     } else if (event.key === "Enter") {
       setIsEdit(false);
+      setPenIsEdit(false);
     }
   }
 
@@ -101,6 +96,14 @@ const MyLink = (props) => {
     } else if (event.key === "Enter") {
       setIsEdit(false);
     }
+  }
+
+  function handleInputFocus() {
+    setIsEdit(!isEdit);
+    setTimeout(() => {
+      let elemInput = document.getElementById("input1");
+      elemInput.focus();
+    }, 0);
   }
 
   let result = posts.map((index) => {
@@ -120,29 +123,28 @@ const MyLink = (props) => {
             ) : (
               <div className={cn(styles.double__input)}>
                 <input
+                  id="input1"
                   type="text"
                   value={inputTitle}
+                  placeholder={inputTitle}
                   onChange={(e) => setInputTitle(e.target.value)}
-                  // onBlur={() => setIsEdit(false)}
                   onKeyDown={handleInput1KeyDown}
-                  tabIndex="1"
                 />
                 <input
+                  id="input2"
                   type="text"
                   value={inputLink}
+                  placeholder={inputLink}
                   onChange={(e) => setInputLink(e.target.value)}
-                  // onBlur={() => setIsEdit(false)}
-                  tabIndex="2"
                   onKeyDown={handleInput2KeyDown}
                 />
               </div>
             )}
-
             <div className={cn(styles.change__link)}>
               {penIsEdit && (
                 <MdCreate
                   className={cn(styles.change__link_icon)}
-                  onClick={() => setIsEdit(!isEdit)}
+                  onClick={handleInputFocus}
                 />
               )}
             </div>

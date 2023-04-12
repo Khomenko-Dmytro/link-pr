@@ -23,3 +23,17 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+.block__marg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 45px 0 110px 0;
+}
+
+.block__marg p {
+  color: white;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+}

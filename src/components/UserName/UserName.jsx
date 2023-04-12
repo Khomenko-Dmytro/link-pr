@@ -10,13 +10,11 @@ const UserName = (props) => {
 
   useEffect(() => {
     if (userValue === null && userValue === "user_name") {
-      document.querySelectorAll(
-        `.${stylesHeader.header__user_name}`
-      ).innerHTML = "user_name";
+      document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
+        "user_name";
     } else {
-      document.querySelectorAll(
-        `.${stylesHeader.header__user_name}`
-      ).innerHTML = "@" + `${userValue}`;
+      document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
+        "@" + `${userValue}`;
     }
   }, [userValue]);
 

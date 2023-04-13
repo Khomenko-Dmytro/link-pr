@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./link.module.css";
 import cn from "classnames";
 import { useState } from "react";
-import { MdCreate } from "react-icons/md";
+import { BsPencilSquare } from "react-icons/bs";
 import { MdRemoveCircleOutline } from "react-icons/md";
 import facebook from "../UI/icons/facebook.png";
 import instagram from "../UI/icons/instagram.png";
@@ -101,8 +101,10 @@ const MyLink = (props) => {
   function handleInputFocus() {
     setIsEdit(!isEdit);
     setTimeout(() => {
-      let elemInput = document.getElementById("input1");
-      elemInput.focus();
+      const inputElem = document.getElementById("input1");
+      if (inputElem) {
+        inputElem.focus();
+      }
     }, 0);
   }
 
@@ -118,31 +120,34 @@ const MyLink = (props) => {
             <div className={cn(styles.block__img)}>{socialMedia}</div>
             {!isEdit ? (
               <a href={inputLink} className={cn(styles.block__link)}>
-                {inputTitle}
+                {inputTitle ? inputTitle : "Title"}
               </a>
             ) : (
               <div className={cn(styles.double__input)}>
                 <input
                   id="input1"
                   type="text"
-                  value={inputTitle}
-                  placeholder={inputTitle}
+                  value={inputTitle === "title" ? "" : inputTitle}
+                  placeholder="Title"
                   onChange={(e) => setInputTitle(e.target.value)}
                   onKeyDown={handleInput1KeyDown}
                 />
                 <input
                   id="input2"
                   type="text"
-                  value={inputLink}
-                  placeholder={inputLink}
+                  value={inputLink === "link" ? "" : inputLink}
+                  placeholder="Link"
                   onChange={(e) => setInputLink(e.target.value)}
                   onKeyDown={handleInput2KeyDown}
+                  // onBlur={() =>
+                  //   elemInput.focus() ? setIsEdit(true) : setIsEdit(false)
+                  // }
                 />
               </div>
             )}
             <div className={cn(styles.change__link)}>
               {penIsEdit && (
-                <MdCreate
+                <BsPencilSquare
                   className={cn(styles.change__link_icon)}
                   onClick={handleInputFocus}
                 />

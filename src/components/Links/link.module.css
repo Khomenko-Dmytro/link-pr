@@ -22,7 +22,7 @@
 
 .block:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: rgba(8, 0, 0, 0.115);
   transition: 0.2s ease-in-out;
 }
 
@@ -57,16 +57,16 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  color: rgb(221, 18, 18);
+  color: rgb(255, 255, 255);
 }
 
 .change__link:hover .change__link_icon {
-  color: rgb(62, 58, 92);
+  color: black;
   transition: 0.2s ease;
 }
 
 .change__link:hover {
-  background-color: rgb(221, 221, 221);
+  background-color: rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
 }
 
@@ -88,13 +88,22 @@
 .double__input {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .double__input input {
   background: inherit;
   color: red;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 8px;
+  border: 1px solid black;
+  background: linear-gradient(
+    to right,
+    rgba(36, 131, 213, 0.5) 0%,
+    rgba(248, 255, 182, 0.3) 80%
+  );
+  margin: 2px 0 2px 0;
 }
 
 .remove__btn {
@@ -115,4 +124,9 @@
 .remove__btn:focus,
 .block:active {
   background-color: rgba(255, 0, 0, 0.356);
+}
+
+::placeholder {
+  color: white;
+  opacity: 100%;
 }

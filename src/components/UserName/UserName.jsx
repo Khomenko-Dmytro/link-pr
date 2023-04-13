@@ -25,15 +25,26 @@ const UserName = (props) => {
     }
   }
 
+  function inputFocus() {
+    setUser(true);
+    setTimeout(() => {
+      const inputElem = document.getElementById("input1");
+      if (inputElem) {
+        inputElem.focus();
+      }
+    }, 0);
+  }
+
   return (
     <div className={cn(styles.top__block)}>
       <div className={cn(styles.photo)}></div>
-      <div className={cn(styles.title)} onClick={() => setUser(true)}>
+      <div className={cn(styles.title)} onClick={inputFocus}>
         @
         {!user ? (
           <span>{userValue}</span>
         ) : (
           <input
+            id="input1"
             value={userValue}
             onChange={(e) => setUserValue(e.target.value)}
             onBlur={() => setUser(false)}

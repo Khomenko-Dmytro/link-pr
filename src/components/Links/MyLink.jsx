@@ -45,8 +45,8 @@ const MyLink = (props) => {
 
   const [isEdit, setIsEdit] = useState(posts.isEdit);
   const [penIsEdit, setPenIsEdit] = useState(false);
-  const [inputTitle, setInputTitle] = useState("title");
-  const [inputLink, setInputLink] = useState("link");
+  const [inputTitle, setInputTitle] = useState("Title");
+  const [inputLink, setInputLink] = useState("Link");
 
   function changePenColor(e) {
     if (isEdit) {
@@ -134,7 +134,7 @@ const MyLink = (props) => {
                 />
                 <input
                   id="input2"
-                  type="text"
+                  type="url"
                   value={inputLink === "link" ? "" : inputLink}
                   placeholder="Link"
                   onChange={(e) => setInputLink(e.target.value)}
@@ -145,12 +145,9 @@ const MyLink = (props) => {
                 />
               </div>
             )}
-            <div className={cn(styles.change__link)}>
+            <div className={cn(styles.change__link)} onClick={handleInputFocus}>
               {penIsEdit && (
-                <BsPencilSquare
-                  className={cn(styles.change__link_icon)}
-                  onClick={handleInputFocus}
-                />
+                <BsPencilSquare className={cn(styles.change__link_icon)} />
               )}
             </div>
           </div>

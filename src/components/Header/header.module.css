@@ -1,9 +1,9 @@
 .block__header {
   border: 1px solid rgb(255, 255, 255);
   border-radius: 50px;
-  width: 780px;
-  height: 60px;
-  margin: 15px auto 0;
+  width: 785px;
+  height: 65px;
+  margin: 10px auto 0;
   visibility: hidden;
   background-color: rgba(8, 0, 0, 0.5);
   /* transition: background-color 150ms ease 0s,
@@ -35,10 +35,11 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  margin-left: 5px;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid white; */
 }
 
 .header__user_name {
@@ -55,7 +56,7 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  margin-right: 5px;
+  margin-right: 10px;
 
   display: flex;
   justify-content: center;

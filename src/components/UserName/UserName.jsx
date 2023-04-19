@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import styles from "./user.module.css";
 import stylesHeader from "../Header/header.module.css";
 import cn from "classnames";
+import Photo from "../UI/Photo";
 
-const UserName = (props) => {
+const UserName = () => {
   const [user, setUser] = useState(false);
   const [userValue, setUserValue] = useState("user_name");
 
@@ -14,11 +15,11 @@ const UserName = (props) => {
         "user_name";
     } else {
       document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
-        "@" + `${userValue}`;
+        "@" + `${userValue ? userValue : "user_name"}`;
     }
   }, [userValue]);
 
-  function handleKey(e) {
+  function handleKeyEnter(e) {
     if (e.key === "Enter") {
       setUser(false);
       setUserValue(userValue);
@@ -37,18 +38,21 @@ const UserName = (props) => {
 
   return (
     <div className={cn(styles.top__block)}>
-      <div className={cn(styles.photo)}></div>
+      <div className={cn(styles.photo)}>
+        <Photo />
+      </div>
       <div className={cn(styles.title)} onClick={inputFocus}>
         @
         {!user ? (
-          <span>{userValue}</span>
+          <span>{userValue ? userValue : "user_name"}</span>
         ) : (
           <input
             id="input1"
-            value={userValue}
+            value={userValue === "user_name" ? "" : userValue}
+            placeholder="user_name"
             onChange={(e) => setUserValue(e.target.value)}
             onBlur={() => setUser(false)}
-            onKeyDown={handleKey}
+            onKeyDown={handleKeyEnter}
           />
         )}
       </div>

@@ -22,6 +22,7 @@ function id() {
 }
 
 const MyLink = (props) => {
+  //Блок Link
   const [posts, setPosts] = useState([
     {
       id: id(),
@@ -30,6 +31,7 @@ const MyLink = (props) => {
       isEdit: false,
     },
   ]);
+  // Іконки
   const icons = [
     instagram,
     facebook,
@@ -44,10 +46,11 @@ const MyLink = (props) => {
   ];
 
   const [isEdit, setIsEdit] = useState(posts.isEdit);
+  //Редагування по натиску на олівець
   const [penIsEdit, setPenIsEdit] = useState(false);
   const [inputTitle, setInputTitle] = useState("Title");
   const [inputLink, setInputLink] = useState("Link");
-
+  //
   function changePenColor(e) {
     if (isEdit) {
       setPenIsEdit(true);
@@ -78,7 +81,7 @@ const MyLink = (props) => {
   } else if (inputTitle.toLowerCase() === "tiktok") {
     socialMedia = <img src={icons[9]} alt="tiktok" />;
   }
-
+  //Табуляція першого інпуту
   function handleInput1KeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -88,7 +91,7 @@ const MyLink = (props) => {
       setPenIsEdit(false);
     }
   }
-
+  //Табуляція другого інпуту
   function handleInput2KeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
@@ -97,7 +100,7 @@ const MyLink = (props) => {
       setIsEdit(false);
     }
   }
-
+  //Фокус для інпуту
   function handleInputFocus() {
     setIsEdit(!isEdit);
     setTimeout(() => {
@@ -127,7 +130,7 @@ const MyLink = (props) => {
                 <input
                   id="input1"
                   type="text"
-                  value={inputTitle === "title" ? "" : inputTitle}
+                  value={inputTitle === "Title" ? "" : inputTitle}
                   placeholder="Title"
                   onChange={(e) => setInputTitle(e.target.value)}
                   onKeyDown={handleInput1KeyDown}
@@ -135,7 +138,7 @@ const MyLink = (props) => {
                 <input
                   id="input2"
                   type="url"
-                  value={inputLink === "link" ? "" : inputLink}
+                  value={inputLink === "Link" ? "" : inputLink}
                   placeholder="Link"
                   onChange={(e) => setInputLink(e.target.value)}
                   onKeyDown={handleInput2KeyDown}

@@ -1,0 +1,28 @@
+.input__file {
+  visibility: hidden;
+  position: absolute;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input__file_button {
+  /* padding: 3px 5px; */
+  /* border-radius: 10px; */
+
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.input__file_btn {
+  width: 35px;
+  height: 35px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.input__file_btn:hover {
+  color: black;
+}

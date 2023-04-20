@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import styles from "../UserName/user.module.css";
 import cn from "classnames";
+import styles from "./Photo.module.css";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 
-const Photo = ({ photoChange }) => {
+const Photo = ({ onPhotoChange }) => {
   const [img, setImg] = useState(null);
 
   function handleImgChange(e) {
@@ -12,7 +13,7 @@ const Photo = ({ photoChange }) => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImg(reader.result);
-      photoChange(reader.result);
+      onPhotoChange(reader.result);
     };
   }
 
@@ -21,13 +22,25 @@ const Photo = ({ photoChange }) => {
       {img ? (
         <img src={img} alt="" />
       ) : (
-        <input
-          type="file"
-          accept="img/*"
-          onChange={handleImgChange}
-          id="input__file"
-          className={cn(styles.input, styles.input__file)}
-        />
+        <div>
+          <input
+            type="file"
+            accept="img/*"
+            onChange={handleImgChange}
+            id="input__file"
+            className={cn(styles.input, styles.input__file)}
+          />
+          <div className={cn(styles.wrapper)}>
+            <label
+              htmlFor="input__file"
+              className={cn(styles.input__file_button)}
+            >
+              <MdOutlineCreateNewFolder
+                className={cn(styles.input__file_btn)}
+              />
+            </label>
+          </div>
+        </div>
       )}
     </>
   );

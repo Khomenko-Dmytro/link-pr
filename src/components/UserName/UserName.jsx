@@ -5,10 +5,11 @@ import stylesHeader from "../Header/header.module.css";
 import cn from "classnames";
 import Photo from "../UI/Photo";
 
-const UserName = () => {
+const UserName = ({ onPhotoChange }) => {
   const [user, setUser] = useState(false);
   const [userValue, setUserValue] = useState("user_name");
 
+  //Дублювання User_Name в Header
   useEffect(() => {
     if (userValue === null && userValue === "user_name") {
       document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
@@ -19,13 +20,14 @@ const UserName = () => {
     }
   }, [userValue]);
 
+  //Кінець корегування по ентнеру
   function handleKeyEnter(e) {
     if (e.key === "Enter") {
       setUser(false);
       setUserValue(userValue);
     }
   }
-
+  //Фокус для інпуту
   function inputFocus() {
     setUser(true);
     setTimeout(() => {
@@ -39,7 +41,7 @@ const UserName = () => {
   return (
     <div className={cn(styles.top__block)}>
       <div className={cn(styles.photo)}>
-        <Photo />
+        <Photo onPhotoChange={(e) => onPhotoChange(e)} />
       </div>
       <div className={cn(styles.title)} onClick={inputFocus}>
         @

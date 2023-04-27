@@ -3,20 +3,20 @@ import { useState, useEffect } from "react";
 import styles from "./user.module.css";
 import stylesHeader from "../Header/header.module.css";
 import cn from "classnames";
-import Photo from "../UI/Photo";
+import Photo from "../Photo/Photo";
 
 const UserName = ({ onPhotoChange }) => {
   const [user, setUser] = useState(false);
-  const [userValue, setUserValue] = useState("user_name");
+  const [userValue, setUserValue] = useState("user name");
 
   //Дублювання User_Name в Header
   useEffect(() => {
-    if (userValue === null && userValue === "user_name") {
+    if (userValue === null && userValue === "user name") {
       document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
         "user_name";
     } else {
       document.querySelector(`.${stylesHeader.header__user_name}`).innerHTML =
-        "@" + `${userValue ? userValue : "user_name"}`;
+        "@" + `${userValue ? userValue : "user name"}`;
     }
   }, [userValue]);
 
@@ -50,11 +50,12 @@ const UserName = ({ onPhotoChange }) => {
         ) : (
           <input
             id="input1"
-            value={userValue === "user_name" ? "" : userValue}
-            placeholder="user_name"
+            className={cn(styles.user__input)}
+            value={userValue === "user name" ? "" : userValue}
             onChange={(e) => setUserValue(e.target.value)}
             onBlur={() => setUser(false)}
             onKeyDown={handleKeyEnter}
+            placeholder="user name"
           />
         )}
       </div>

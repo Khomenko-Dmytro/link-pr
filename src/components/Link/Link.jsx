@@ -4,16 +4,29 @@ import cn from "classnames";
 import { useState } from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { MdRemoveCircleOutline } from "react-icons/md";
-import facebook from "../UI/icons/facebook.png";
-import instagram from "../UI/icons/instagram.png";
-import twitter from "../UI/icons/twitter.png";
-import youtube from "../UI/icons/youtube.png";
-import soundcloud from "../UI/icons/soundcloud.png";
-import linkedin from "../UI/icons/linkedin.png";
-import pinterest from "../UI/icons/pinterest.png";
-import reddit from "../UI/icons/reddit.png";
-import telegram from "../UI/icons/telegram.png";
-import tiktok from "../UI/icons/tiktok.png";
+import facebook from "../#UI/icons/facebook.png";
+import instagram from "../#UI/icons/instagram.png";
+import twitter from "../#UI/icons/twitter.png";
+import youtube from "../#UI/icons/youtube.png";
+import soundcloud from "../#UI/icons/soundcloud.png";
+import linkedin from "../#UI/icons/linkedin.png";
+import pinterest from "../#UI/icons/pinterest.png";
+import reddit from "../#UI/icons/reddit.png";
+import telegram from "../#UI/icons/telegram.png";
+import tiktok from "../#UI/icons/tiktok.png";
+// Іконки
+const icons = [
+  instagram,
+  facebook,
+  youtube,
+  twitter,
+  soundcloud,
+  linkedin,
+  pinterest,
+  reddit,
+  telegram,
+  tiktok,
+];
 
 function id() {
   let date = Date.now();
@@ -21,7 +34,7 @@ function id() {
   return date + random;
 }
 
-const MyLink = (props) => {
+const Link = (props) => {
   //Блок Link
   const [posts, setPosts] = useState([
     {
@@ -31,33 +44,11 @@ const MyLink = (props) => {
       isEdit: false,
     },
   ]);
-  // Іконки
-  const icons = [
-    instagram,
-    facebook,
-    youtube,
-    twitter,
-    soundcloud,
-    linkedin,
-    pinterest,
-    reddit,
-    telegram,
-    tiktok,
-  ];
-
   const [isEdit, setIsEdit] = useState(posts.isEdit);
   //Редагування по натиску на олівець
   const [penIsEdit, setPenIsEdit] = useState(false);
   const [inputTitle, setInputTitle] = useState("Title");
   const [inputLink, setInputLink] = useState("Link");
-  //
-  function changePenColor(e) {
-    if (isEdit) {
-      setPenIsEdit(true);
-    } else {
-      setPenIsEdit(false);
-    }
-  }
 
   let socialMedia;
   if (inputTitle.toLowerCase() === "instagram") {
@@ -110,6 +101,14 @@ const MyLink = (props) => {
       }
     }, 0);
   }
+  //Прибирає олівець в режимі 'Title'
+  function changePenMouseLeave() {
+    if (isEdit) {
+      setPenIsEdit(true);
+    } else {
+      setPenIsEdit(false);
+    }
+  }
 
   let result = posts.map((index) => {
     return (
@@ -117,12 +116,16 @@ const MyLink = (props) => {
         <div
           className={cn(styles.block)}
           onMouseEnter={() => setPenIsEdit(true)}
-          onMouseLeave={changePenColor}
+          onMouseLeave={changePenMouseLeave}
         >
           <div className={cn(styles.block__container)}>
             <div className={cn(styles.block__img)}>{socialMedia}</div>
             {!isEdit ? (
-              <a href={inputLink} className={cn(styles.block__link)}>
+              <a
+                href={inputLink}
+                className={cn(styles.block__link)}
+                target="_blank"
+              >
                 {inputTitle ? inputTitle : "Title"}
               </a>
             ) : (
@@ -131,7 +134,7 @@ const MyLink = (props) => {
                   id="input1"
                   type="text"
                   value={inputTitle === "Title" ? "" : inputTitle}
-                  placeholder="Title"
+                  placeholder="social media / title"
                   onChange={(e) => setInputTitle(e.target.value)}
                   onKeyDown={handleInput1KeyDown}
                 />
@@ -139,12 +142,9 @@ const MyLink = (props) => {
                   id="input2"
                   type="url"
                   value={inputLink === "Link" ? "" : inputLink}
-                  placeholder="Link"
+                  placeholder="link"
                   onChange={(e) => setInputLink(e.target.value)}
                   onKeyDown={handleInput2KeyDown}
-                  // onBlur={() =>
-                  //   elemInput.focus() ? setIsEdit(true) : setIsEdit(false)
-                  // }
                 />
               </div>
             )}
@@ -165,4 +165,4 @@ const MyLink = (props) => {
   return <>{result}</>;
 };
 
-export default MyLink;
+export default Link;

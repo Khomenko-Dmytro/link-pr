@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import cn from "classnames";
 import styles from "./Photo.module.css";
-import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { BsPersonCircle } from "react-icons/bs";
+import { MdOutlineAddAPhoto } from "react-icons/md";
 
 const Photo = ({ onPhotoChange }) => {
   const [img, setImg] = useState(null);
@@ -22,7 +23,7 @@ const Photo = ({ onPhotoChange }) => {
       {img ? (
         <img src={img} alt="" />
       ) : (
-        <div>
+        <>
           <input
             type="file"
             accept="img/*"
@@ -35,12 +36,10 @@ const Photo = ({ onPhotoChange }) => {
               htmlFor="input__file"
               className={cn(styles.input__file_button)}
             >
-              <MdOutlineCreateNewFolder
-                className={cn(styles.input__file_btn)}
-              />
+              <BsPersonCircle className={cn(styles.input__file_btn)} />
             </label>
           </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -8,8 +8,8 @@ import UserName from "./components/UserName/UserName";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import Footer from "./components/Footer/Footer";
-import MyLink from "./components/Links/MyLink";
-import Photo from "./components/UI/Photo";
+import Link from "./components/Link/Link";
+import Photo from "./components/Photo/Photo";
 import Info from "./components/Info/Info";
 
 function id() {
@@ -20,7 +20,7 @@ function id() {
 
 function App() {
   //Кількість Link блоків
-  const [posts, setPosts] = useState([<MyLink key={id()} />]);
+  const [posts, setPosts] = useState([<Link key={id()} />]);
   //Фото
   const [photo, setPhoto] = useState(null);
 
@@ -79,7 +79,7 @@ function App() {
         <UserName onPhotoChange={(e) => setPhoto(e)} />
         {posts}
         <div className={cn(styles.block__marg)}></div>
-        <Footer onClick={() => setPosts([...posts, <MyLink key={id()} />])} />
+        <Footer onClick={() => setPosts([...posts, <Link key={id()} />])} />
         {info ? <Info onClick={handlerChangeInfo} /> : ""}
       </div>
     </div>

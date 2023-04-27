@@ -9,7 +9,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: rgb(71, 71, 71, 0.3);
+  /* background: rgba(0, 0, 0, 0.275); */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -25,9 +25,6 @@
   border-radius: 50%;
 }
 
-.photo input {
-}
-
 .title {
   margin-top: 20px;
   margin-bottom: 30px;
@@ -36,4 +33,18 @@
   font-weight: 700;
   font-size: 20px;
   cursor: pointer;
+}
+
+.user__input {
+  background: linear-gradient(
+    to right,
+    rgba(36, 130, 213, 0.767) 0%,
+    rgba(246, 182, 255, 0.3) 80%
+  );
+  border: 1px solid black;
+  text-align: center;
+  height: 18px;
+  font-size: 15px;
+  color: black;
+  font-weight: 700;
 }

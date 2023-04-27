@@ -41,11 +41,18 @@
 
 .block__link {
   text-decoration: none;
-  color: white;
-  display: block;
+  color: rgb(255, 255, 255);
+
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 600;
+  overflow: hidden;
+  line-height: 1.5;
+  text-align: center;
+}
+.block a {
+  display: flex;
+  /* flex: 0 1 ; */
 }
 
 .block:hover .block__link {
@@ -54,8 +61,8 @@
 }
 
 .change__link_icon {
-  width: 20px;
-  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
   border-radius: 50%;
   color: rgb(255, 255, 255);
   display: inline-block;
@@ -95,7 +102,7 @@
 
 .double__input input {
   background: inherit;
-  color: red;
+  color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 8px;
   border: 1px solid black;
@@ -105,6 +112,8 @@
     rgba(248, 255, 182, 0.3) 80%
   );
   margin: 2px 0 2px 0;
+  text-align: center;
+  font-weight: 500;
 }
 
 .remove__btn {
@@ -127,6 +136,6 @@
 }
 
 ::placeholder {
-  color: white;
+  color: rgba(255, 255, 255, 0.598);
   opacity: 100%;
 }

@@ -46,7 +46,7 @@ const UserName = ({ onPhotoChange }) => {
       <div className={cn(styles.title)} onClick={inputFocus}>
         @
         {!user ? (
-          <span>{userValue ? userValue : "user_name"}</span>
+          <span>{userValue || "user_name"}</span>
         ) : (
           <input
             id="input1"

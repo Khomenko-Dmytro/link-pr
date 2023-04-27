@@ -7,9 +7,9 @@ const Header = ({ photo, onClick }) => {
   return (
     <div className={cn(styles.block__header)}>
       <div className={cn(styles.header__photo)}>
-        {photo ? <img src={photo} alt="фото" /> : <div></div>}
+        {photo ? <img src={photo} alt="фото" /> : <div/>}
       </div>
-      <div className={cn(styles.header__user_name)}></div>
+      <div className={cn(styles.header__user_name)} />
       <div className={cn(styles.header__link)} onClick={onClick}>
         <FiShare className={cn(styles.header__link_icon)} />
       </div>

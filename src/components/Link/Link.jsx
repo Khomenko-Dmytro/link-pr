@@ -6,9 +6,8 @@ import { BsPencilSquare } from "react-icons/bs";
 import { MdRemoveCircleOutline } from "react-icons/md";
 import { getSocialImage } from "./utils";
 
-const Link = () => {
+const Link = ({ onRemoveItem }) => {
   //Блок Link
-  const [isVisible, setIsVisible] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
   //Редагування по натиску на олівець
   const [penIsEdit, setPenIsEdit] = useState(false);
@@ -55,8 +54,6 @@ const Link = () => {
     }
   }
 
-  if(!isVisible) return null;
-
   return <div>
     <div
       className={cn(styles.block)}
@@ -100,7 +97,7 @@ const Link = () => {
         </div>
       </div>
       <div className={cn(styles.remove__btn)}>
-        <MdRemoveCircleOutline onClick={() => setIsVisible(false)} />
+        <MdRemoveCircleOutline onClick={onRemoveItem} />
       </div>
     </div>
   </div>;

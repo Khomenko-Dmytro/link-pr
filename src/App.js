@@ -1,55 +1,23 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./styles/App.module.css";
-import stylesHeader from "./components/Header/header.module.css";
 import stylesInfo from "./components/Info/info.module.css";
 import cn from "classnames";
-import { useState } from "react";
 import UserName from "./components/UserName/UserName";
 import Header from "./components/Header/Header";
-import { useEffect } from "react";
 import Footer from "./components/Footer/Footer";
-import Link from "./components/Link/Link";
-import Photo from "./components/Photo/Photo";
+import List from "./components/Link/List";
 import Info from "./components/Info/Info";
-
-function id() {
-  let date = Date.now();
-  let random = Math.random().toString(36).substr(2);
-  return date + random;
-}
+import handleScroll from "./actions/handleScroll";
+import { generateId } from "./utils";
 
 function App() {
   //Кількість Link блоків
-  const [posts, setPosts] = useState([<Link key={id()} />]);
+  const [list, setList] = useState([{ id: generateId() }]);
   //Фото
   const [photo, setPhoto] = useState(null);
 
   //Поява Header-у при прокрутці
   useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 70) {
-        document.querySelector(
-          `.${stylesHeader.block__header}`
-        ).style.visibility = "visible";
-        document.querySelector(
-          `.${stylesHeader.header__link}`
-        ).style.backgroundColor = "white";
-        document.querySelector(
-          `.${stylesHeader.header__link_icon}`
-        ).style.color = "black";
-      } else {
-        document.querySelector(
-          `.${stylesHeader.block__header}`
-        ).style.visibility = "hidden";
-        document.querySelector(
-          `.${stylesHeader.header__link}`
-        ).style.backgroundColor = "rgb(0, 0, 0)";
-        document.querySelector(
-          `.${stylesHeader.header__link_icon}`
-        ).style.color = "white";
-      }
-    }
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -57,8 +25,13 @@ function App() {
     };
   }, []);
 
+
   // Блок Info
   const [info, setInfo] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = info ? "hidden" : "scroll"
+  }, [info])
   //
   function handlerChangeInfo(e) {
     const infoClass = document.querySelector(`.${stylesInfo.wrapper}`);
@@ -68,19 +41,21 @@ function App() {
     }
   }
 
-  info
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "scroll");
+  const handleAddItem = () => setList((prevState) => [...prevState, { id: generateId() }]);
+
+  const handleRemoveItem = (targetId) => setList(
+    (prevState) => prevState.filter(({ id }) => id !== targetId)
+  );
 
   return (
     <div className={cn(styles.wrapper)}>
       <div className={cn(styles.fullscreen)}>
         <Header photo={photo} onClick={() => setInfo(!info)} />
         <UserName onPhotoChange={(e) => setPhoto(e)} />
-        {posts}
-        <div className={cn(styles.block__marg)}></div>
-        <Footer onClick={() => setPosts([...posts, <Link key={id()} />])} />
-        {info ? <Info onClick={handlerChangeInfo} /> : ""}
+        <List array={list} onRemoveItem={handleRemoveItem} />
+        <div className={cn(styles.block__marg)} />
+        <Footer onClick={handleAddItem} />
+        {info && <Info onClick={handlerChangeInfo} />}
       </div>
     </div>
   );

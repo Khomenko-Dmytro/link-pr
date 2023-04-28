@@ -22,4 +22,4 @@ export default function handleScroll() {
       `.${stylesHeader.header__link_icon}`
     ).style.color = "white";
   }
-}
+};

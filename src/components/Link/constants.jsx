@@ -35,4 +35,4 @@ export const socialMap = {
   reddit: <img src={icons.reddit} alt="reddit" />,
   telegram: <img src={icons.telegram} alt="telegram" />,
   tiktok: <img src={icons.tiktok} alt="tiktok" />,
-}
+};
